@@ -1,9 +1,12 @@
-class Barracks
-  attr_accessor :gold, :food
+class Barracks < Unit
+  attr_accessor :gold, :food, :lumber
 
   def initialize
     @gold = 1000
+    @lumber = 500
     @food = 80
+    @health_points = 500
+    @attack_power = 0
   end
 
   def can_train_footman?
@@ -39,6 +42,27 @@ class Barracks
       @gold -= 90
       @food -= 5
       Peasant.new
+    end
+  end
+
+  def can_train_siege_engine?
+    if self.gold < 200
+      return false
+    elsif self.food < 3
+      return false
+    elsif self.lumber < 60
+      return false
+    else
+      return true
+    end
+  end
+  
+  def train_siege_engine
+    if can_train_siege_engine? == true
+      @gold -= 200
+      @food -= 3
+      @lumber -= 60
+      Siege_Engine.new
     end
   end
 end

@@ -9,4 +9,13 @@ attr_accessor :attack_power
     @health_points = 60
     @attack_power = 10
   end
+  
+  def attack!(enemy)
+    if enemy.class == Barracks
+      enemy.damage(@attack_power/2)
+    else
+      enemy.damage(@attack_power)
+    end
+  end
+  
 end
