@@ -18,7 +18,7 @@ require_relative "spec_helper"
 #Cost: 200 gold, 60 lumber, 3 food
 
 
-describe Siege_Engine do 
+describe Siege_Engine do
 
   before :each do
     @siege_engine = Siege_Engine.new
@@ -43,8 +43,7 @@ describe Siege_Engine do
 
 
   describe "#attack!" do
-    it "should be" do
-      p @siege_engine2.health_points 
+    it "should be" do 
       @siege_engine.attack!(@siege_engine2)
       expect(@siege_engine2.health_points == 350).to be_truthy
     end
